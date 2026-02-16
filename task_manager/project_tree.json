@@ -1,0 +1,144 @@
+{
+  "name": "task_manager",
+  "path": "task_manager",
+  "type": "directory",
+  "children": [
+    {
+      "name": "__pycache__",
+      "path": "task_manager/__pycache__",
+      "type": "directory",
+      "children": [
+        {
+          "name": "main.cpython-314.pyc",
+          "path": "task_manager/__pycache__/main.cpython-314.pyc",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "main.py",
+      "path": "task_manager/main.py",
+      "type": "file"
+    },
+    {
+      "name": "dependencies",
+      "path": "task_manager/dependencies",
+      "type": "directory",
+      "children": [
+        {
+          "name": "task_dep.py",
+          "path": "task_manager/dependencies/task_dep.py",
+          "type": "file"
+        },
+        {
+          "name": "__pycache__",
+          "path": "task_manager/dependencies/__pycache__",
+          "type": "directory",
+          "children": [
+            {
+              "name": "task_dep.cpython-314.pyc",
+              "path": "task_manager/dependencies/__pycache__/task_dep.cpython-314.pyc",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "models",
+      "path": "task_manager/models",
+      "type": "directory",
+      "children": [
+        {
+          "name": "task.py",
+          "path": "task_manager/models/task.py",
+          "type": "file"
+        },
+        {
+          "name": "__pycache__",
+          "path": "task_manager/models/__pycache__",
+          "type": "directory",
+          "children": [
+            {
+              "name": "task.cpython-314.pyc",
+              "path": "task_manager/models/__pycache__/task.cpython-314.pyc",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "routes",
+      "path": "task_manager/routes",
+      "type": "directory",
+      "children": [
+        {
+          "name": "task_routes.py",
+          "path": "task_manager/routes/task_routes.py",
+          "type": "file"
+        },
+        {
+          "name": "__pycache__",
+          "path": "task_manager/routes/__pycache__",
+          "type": "directory",
+          "children": [
+            {
+              "name": "task_routes.cpython-314.pyc",
+              "path": "task_manager/routes/__pycache__/task_routes.cpython-314.pyc",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "schemas",
+      "path": "task_manager/schemas",
+      "type": "directory",
+      "children": [
+        {
+          "name": "task.py",
+          "path": "task_manager/schemas/task.py",
+          "type": "file"
+        },
+        {
+          "name": "__pycache__",
+          "path": "task_manager/schemas/__pycache__",
+          "type": "directory",
+          "children": [
+            {
+              "name": "task.cpython-314.pyc",
+              "path": "task_manager/schemas/__pycache__/task.cpython-314.pyc",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "services",
+      "path": "task_manager/services",
+      "type": "directory",
+      "children": [
+        {
+          "name": "task_service.py",
+          "path": "task_manager/services/task_service.py",
+          "type": "file"
+        },
+        {
+          "name": "__pycache__",
+          "path": "task_manager/services/__pycache__",
+          "type": "directory",
+          "children": [
+            {
+              "name": "task_service.cpython-314.pyc",
+              "path": "task_manager/services/__pycache__/task_service.cpython-314.pyc",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
