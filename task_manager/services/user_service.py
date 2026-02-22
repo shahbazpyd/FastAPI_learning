@@ -2,6 +2,7 @@ from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
 from models.user import User
 from core.security import hash_password, veryfy_password, create_token
+from sqlalchemy import select
 
 class UserService:
 
@@ -21,8 +22,12 @@ class UserService:
             self.db.rollback()
             raise HTTPException(400, "Username already exists")
     
-    def login(self, data):
-        user = self.db.query(User).filter(User.username == data.username).first()
+    async def login(self, data):
+        # user = self.db.query(User).filter(User.username == data.username).first()
+        result = await self.db.execute(
+            select(User).where(User.username == data.username)
+        )
+        user = result.scalar_one_or_none()
 
         if not user or not veryfy_password(data.password, user.hashed_password):
             return None

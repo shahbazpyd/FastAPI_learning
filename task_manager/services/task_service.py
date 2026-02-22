@@ -4,6 +4,7 @@ from schemas.task import TaskCreate, TaskUpdate
 from models.user import User
 from core.cache import get_cache, set_cache
 from core.cache import cache_store 
+from sqlalchemy import select
 
 class TaskService:
     def __init__(self, db):
@@ -28,7 +29,26 @@ class TaskService:
         cache_store.clear()
         return task
     
-    def get_tasks(self, limit:int ,skip:int ):
+    # def get_tasks(self, limit:int ,skip:int ):
+
+    #     cache_key = f"tasks_{limit}_{skip}"
+
+    #     cached = get_cache(cache_key)
+    #     if cached:
+    #         print("from cached")
+    #         return cached
+        
+    #     tasks = (
+    #         self.db.query(Task)
+    #         .offset(skip)
+    #         .limit(limit)
+    #         .all()
+    #     )
+    #     print("from db")
+    #     set_cache(cache_key, tasks, ttl= 10)
+    #     return tasks
+    
+    async def get_tasks(self, limit: int, skip: int):
 
         cache_key = f"tasks_{limit}_{skip}"
 
@@ -36,17 +56,20 @@ class TaskService:
         if cached:
             print("from cached")
             return cached
-        
-        tasks = (
-            self.db.query(Task)
-            .offset(skip)
-            .limit(limit)
-            .all()
-        )
+
+        stmt = select(Task).offset(skip).limit(limit)
+
+        result = await self.db.execute(stmt)
+
+        tasks = result.scalars().all()
+
         print("from db")
-        set_cache(cache_key, tasks, ttl= 10)
+
+        set_cache(cache_key, tasks, ttl=10)
+
         return tasks
-    
+
+
     def get_task(self, task_id:int):
         return self.db.query(Task).filter(Task.id == task_id).first()
       

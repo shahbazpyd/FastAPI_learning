@@ -30,8 +30,8 @@ def create_task(
 
 
 @router.get("")
-def get_tasks(limit: int = 5, skip: int = 0, service: TaskService = Depends(get_task_services)):
-    return service.get_tasks(limit=limit, skip = skip)
+async def get_tasks(limit: int = 5, skip: int = 0, service: TaskService = Depends(get_task_services)):
+    return await service.get_tasks(limit=limit, skip = skip)
 
 
 @router.get("/{task_id}")

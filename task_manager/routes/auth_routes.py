@@ -9,8 +9,8 @@ def register(data: UserCreate, service = Depends(get_user_service)):
     return service.register(data)
 
 @router.post("/login")
-def login(data:UserLogin, service = Depends(get_user_service)):
-    token = service.login(data)
+async def login(data:UserLogin, service = Depends(get_user_service)):
+    token = await service.login(data)
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
     return {"access_token": token}
