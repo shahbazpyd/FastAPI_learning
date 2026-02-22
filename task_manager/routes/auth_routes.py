@@ -5,8 +5,8 @@ from dependencies.user_dep import get_user_service
 
 router = APIRouter(prefix="/auth", tags = ["Auth"])
 @router.post("/register", response_model=UserResponse)
-def register(data: UserCreate, service = Depends(get_user_service)):
-    return service.register(data)
+async def register(data: UserCreate, service = Depends(get_user_service)):
+    return await service.register(data)
 
 @router.post("/login")
 async def login(data:UserLogin, service = Depends(get_user_service)):

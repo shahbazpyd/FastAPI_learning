@@ -9,14 +9,15 @@ class UserService:
     def __init__(self, db) -> None:
         self.db = db
 
-    def register(self, data):
+    async def register(self, data):
         user = User(username = data.username,
                     hashed_password = hash_password(data.password)
                 )
         try:
             self.db.add(user)
-            self.db.commit()
-            self.db.refresh(user)
+            await self.db.commit()
+            await self.db.refresh(user)
+            print("USER ID:", user.id)
             return user
         except IntegrityError:
             self.db.rollback()

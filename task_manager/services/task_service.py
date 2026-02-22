@@ -18,6 +18,7 @@ class TaskService:
         print("data1", data)
         print("data2", data.dict())
         user = self.db.query(User).filter(User.username == username).first()
+        
         task = Task(title = data.title,
                     description = data.description,
                     user_id = user.id
