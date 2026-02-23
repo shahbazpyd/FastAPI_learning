@@ -1,1 +1,0 @@
-DATABASE_URL = "postgresql+asyncpg://postgres:postgres123@localhost/taskdb"

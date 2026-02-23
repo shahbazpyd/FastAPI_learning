@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from fastapi import HTTPException
 from jose import jwt, JWTError
 from jose import JWTError, ExpiredSignatureError
+from core.config import settings
 
 
 
@@ -18,11 +19,11 @@ def veryfy_password(plain, hashed):
     return pwd_context.verify(plain, hashed)
 
 
-SECRET_KEY = "secret"
-ALGORITHM = "HS256"
+SECRET_KEY = settings.JWT_SECRET
+ALGORITHM = settings.ALGORITHM
 def create_token(data: dict):
     to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(hours = 1)
+    expire = settings.ACCESS_TOKEN_EXPIRE_MINUTES
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
