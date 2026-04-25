@@ -295,3 +295,5 @@ app = FastAPI()
 # @app.post("/create_user", response_model=UserResponse)
 # def user_create(user: UserCreate):
 #     return user
+
+print("python install")

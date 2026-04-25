@@ -23,8 +23,8 @@ SECRET_KEY = settings.JWT_SECRET
 ALGORITHM = settings.ALGORITHM
 def create_token(data: dict):
     to_encode = data.copy()
-    expire = settings.ACCESS_TOKEN_EXPIRE_MINUTES
-    to_encode.update({"exp": expire})
+    expire = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire.timestamp()})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
